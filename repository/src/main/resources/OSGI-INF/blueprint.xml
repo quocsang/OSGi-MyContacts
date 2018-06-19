@@ -1,0 +1,20 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <bean id="contactsRepository" class="com.tma.tqsang.mycontacts.repository.impl.ContactsRepositoryImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <service ref="contactsRepository" interface="com.tma.tqsang.mycontacts.repository.ContactsRepository"/>
+
+    <bean id="dataSource" class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" >
+        <property name="serverName" value="172.17.0.2" />
+        <property name="databaseName" value="test" />
+        <property name="port" value="3306" />
+        <property name="user" value="root" />
+        <property name="password" value="root" />
+    </bean>
+
+    <!-- Use this if you want a specific DataSource
+        <reference id="dataSource" interface="javax.sql.DataSource" filter="(osgi.jndi.service.name=jdbc/mysqlds)"/>
+    -->
+</blueprint>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <reference id="contactsService" interface="com.tma.tqsang.mycontacts.service.ContactsService"
+               availability="mandatory"></reference>
+
+    <bean id="client" class="com.tma.tqsang.mycontacts.executor.client.Client" init-method="init"
+          destroy-method="close">
+        <property name="m_contactsService" ref="contactsService"></property>
+    </bean>
+
+    <bean id="createCommand" class="com.tma.tqsang.mycontacts.executor.command.CreateContactsCommand"
+          activation="eager">
+        <property name="contactsService" ref="contactsService"></property>
+    </bean>
+    <bean id="deleteCommand" class="com.tma.tqsang.mycontacts.executor.command.DeleteContactsCommand"
+          activation="eager">
+        <property name="contactsService" ref="contactsService"></property>
+    </bean>
+    <bean id="readAllCommand" class="com.tma.tqsang.mycontacts.executor.command.ReadAllContactsCommand"
+          activation="eager">
+        <property name="contactsService" ref="contactsService"></property>
+    </bean>
+    <bean id="readCommand" class="com.tma.tqsang.mycontacts.executor.command.ReadContactsCommand"
+          activation="eager">
+        <property name="contactsService" ref="contactsService"></property>
+    </bean>
+    <bean id="updateCommand" class="com.tma.tqsang.mycontacts.executor.command.UpdateContactsCommand"
+          activation="eager">
+        <property name="contactsService" ref="contactsService"></property>
+    </bean>
+    <!--<command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0">-->
+    <!--<command name="mycontacts/create">-->
+    <!--<action class="com.tma.tqsang.mycontacts.executor.command.CreateContactsCommand">-->
+    <!--<property name="contactsService" ref="contactsService"/>-->
+    <!--</action>-->
+    <!--</command>-->
+    <!--<command name="mycontacts/delete">-->
+    <!--<action class="com.tma.tqsang.mycontacts.executor.command.DeleteContactsCommand">-->
+    <!--<property name="contactsService" ref="contactsService"/>-->
+    <!--</action>-->
+    <!--</command>-->
+    <!--<command name="mycontacts/list">-->
+    <!--<action class="com.tma.tqsang.mycontacts.executor.command.ReadAllContactsCommand">-->
+    <!--<property name="contactsService" ref="contactsService"/>-->
+    <!--</action>-->
+    <!--</command>-->
+    <!--<command name="mycontacts/read">-->
+    <!--<action class="com.tma.tqsang.mycontacts.executor.command.ReadContactsCommand">-->
+    <!--<property name="contactsService" ref="contactsService"/>-->
+    <!--</action>-->
+    <!--</command>-->
+    <!--<command name="mycontacts/update">-->
+    <!--<action class="com.tma.tqsang.mycontacts.executor.command.UpdateContactsCommand">-->
+    <!--<property name="contactsService" ref="contactsService"/>-->
+    <!--</action>-->
+    <!--</command>-->
+    <!--</command-bundle>-->
+
+</blueprint>

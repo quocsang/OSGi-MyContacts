@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="my-feature">
+    <feature name="my-contacts" version="1.0.0">
+        <bundle start-level="80">file:D:plugin/repository-1.0.0.jar</bundle>
+        <bundle start-level="90">file:D:plugin/service-1.0.0.jar</bundle>
+        <bundle start-level="101">file:D:plugin/executor-1.0.0.jar</bundle>
+    </feature>
+</features>
+
+        <!--feature:repo-add file:D:plugin/features.xml-->
+        <!--feature:install my-contacts-->
